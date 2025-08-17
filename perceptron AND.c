@@ -12,7 +12,7 @@
 typedef int ivector[ ISIZE ];
 typedef float wvector[ WSIZE ];
 
-wvector weights;
+wvector weights={0, 0, 0};
 
 void initialize( void )
 {
@@ -51,7 +51,7 @@ void train( void )
    int iteration_error = 0;
    int desired_output, output, error;
 
-   // Train the boolean OR set
+   // Train the boolean AND set
    ivector test[4] = { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } };
 
    do 
@@ -95,7 +95,7 @@ void train( void )
 
 int main( void )
 {
-   initialize( );
+   //initialize( );
 
    train( );
 
