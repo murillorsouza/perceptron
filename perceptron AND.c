@@ -72,14 +72,13 @@ void train( void )
          weights[ 0 ] += ( LEARNING_RATE * ( ( float ) error * ( float )test[ i ][ 0 ] ) );
          weights[ 1 ] += ( LEARNING_RATE * ( ( float ) error * ( float )test[ i ][ 1 ] ) );
          weights[ 2 ] += ( LEARNING_RATE * ( float ) error );
-         
-         printf("Partial weights %f %f bias %f\n", weights[0], weights[1], weights[2]);
+           
          
          iteration_error += ( error * error );
       }
 
       printf( "Iteration error %d\n", iteration_error );
-
+      printf("Partial weights %f %f bias %f\n", weights[0], weights[1], weights[2]);
       printf("\n");
 
    } while ( ( iteration_error > 0.0 ) && ( iterations++ < ITERATIONS ) );
@@ -88,7 +87,7 @@ void train( void )
 }
 
 
-Int main( void )
+int main( void )
 {
    initialize( );
 
