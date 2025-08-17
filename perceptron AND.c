@@ -24,6 +24,10 @@ void initialize( void )
    {
       weights[ i ] = ( ( float ) rand( ) / ( float ) RAND_MAX );
    }
+
+   printf("\n");
+   printf("Initial weights %f %f bias %f\n", weights[0], weights[1], weights[2]);
+   printf("\n");
 }
 
 int feedforward( ivector inputs )
@@ -58,7 +62,7 @@ void train( void )
 
       for ( int i = 0 ; i < ( sizeof( test ) / sizeof( ivector ) ) ; i++ )
       {
-         desired_output = test[ i ][ 0 ] || test[ i ][ 1 ];
+         desired_output = test[ i ][ 0 ] && test[ i ][ 1 ];
          output = feedforward( test[ i ] );
 
          error = desired_output - output;
@@ -68,7 +72,9 @@ void train( void )
          weights[ 0 ] += ( LEARNING_RATE * ( ( float ) error * ( float )test[ i ][ 0 ] ) );
          weights[ 1 ] += ( LEARNING_RATE * ( ( float ) error * ( float )test[ i ][ 1 ] ) );
          weights[ 2 ] += ( LEARNING_RATE * ( float ) error );
-
+         
+         printf("Partial weights %f %f bias %f\n", weights[0], weights[1], weights[2]);
+         
          iteration_error += ( error * error );
       }
 
@@ -82,7 +88,7 @@ void train( void )
 }
 
 
-void main( void )
+Int main( void )
 {
    initialize( );
 
@@ -90,5 +96,5 @@ void main( void )
 
    printf("Final weights %f %f bias %f\n", weights[0], weights[1], weights[2]);
 
-   return;
+   return 0;
 }
