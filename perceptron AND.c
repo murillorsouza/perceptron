@@ -6,8 +6,8 @@
 
 #define ISIZE 2
 #define WSIZE ( ISIZE + 1 ) // weights + bias
-#define LEARNING_RATE  0.1
-#define ITERATIONS     10
+#define LEARNING_RATE  0.01
+#define ITERATIONS     100
 
 typedef int ivector[ ISIZE ];
 typedef float wvector[ WSIZE ];
@@ -67,7 +67,7 @@ void train( void )
 
          error = desired_output - output;
 
-         printf("%d or %d = %d (%d)\n", test[i][0], test[i][1], output, desired_output );
+         printf("%d and %d = %d (%d)\n", test[i][0], test[i][1], output, desired_output );
 
          weights[ 0 ] += ( LEARNING_RATE * ( ( float ) error * ( float )test[ i ][ 0 ] ) );
          weights[ 1 ] += ( LEARNING_RATE * ( ( float ) error * ( float )test[ i ][ 1 ] ) );
@@ -76,16 +76,16 @@ void train( void )
             
          iteration_error += ( error * error );
          
-         printf("Partial weights %f %f bias %f\n", weights[0], weights[1], weights[2]);
-         printf( "Iteration error %d\n", iteration_error );
-         printf( "Error %d\n", error );
+         //printf("Partial weights %f %f bias %f\n", weights[0], weights[1], weights[2]);
+         //printf( "Iteration error %d\n", iteration_error );
+         //printf( "Error %d\n", error );
       }
 
       printf( "Iteration error %d\n", iteration_error );
-      printf( "Error %d\n", error );
+      //printf( "Error %d\n", error );
       
       printf("Partial weights %f %f bias %f\n", weights[0], weights[1], weights[2]);
-      printf("\n");
+      //printf("\n");
 
    } while ( ( iteration_error > 0.0 ) && ( iterations++ < ITERATIONS ) );
 
