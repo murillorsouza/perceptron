@@ -51,7 +51,7 @@ void train( void )
    int iteration_error = 0;
    int desired_output, output, error;
 
-   // Train the boolean AND set
+   // Train the boolean XOR set
    ivector test[4] = { { 0, 0 }, { 0, 1 }, { 1, 0 }, { 1, 1 } };
 
    do 
@@ -62,7 +62,7 @@ void train( void )
 
       for ( int i = 0 ; i < ( sizeof( test ) / sizeof( ivector ) ) ; i++ )
       {
-         desired_output = test[ i ][ 0 ] && test[ i ][ 1 ];
+         desired_output = test[ i ][ 0 ] |= test[ i ][ 1 ];
          output = feedforward( test[ i ] );
 
          error = desired_output - output;
