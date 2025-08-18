@@ -63,7 +63,10 @@ void train( void )
       for ( int i = 0 ; i < ( sizeof( test ) / sizeof( ivector ) ) ; i++ )
       {
          //desired_output = test[ i ][ 0 ] |= test[ i ][ 1 ];
-         desired_output = if (test[ i ][ 0 ] = test[ i ][ 1 ]) {0} else {1}
+         if (test[ i ][ 0 ] = test[ i ][ 1 ]) 
+         {desired_output = 0} 
+         else 
+         {desired_output = 1}
          output = feedforward( test[ i ] );
 
          error = desired_output - output;
