@@ -7,7 +7,7 @@
 #define ISIZE 2
 #define WSIZE ( ISIZE + 1 ) // weights + bias
 #define LEARNING_RATE  0.01
-#define ITERATIONS     100
+#define ITERATIONS     200
 
 typedef int ivector[ ISIZE ];
 typedef float wvector[ WSIZE ];
@@ -63,10 +63,14 @@ void train( void )
       for ( int i = 0 ; i < ( sizeof( test ) / sizeof( ivector ) ) ; i++ )
       {
          //desired_output = test[ i ][ 0 ] |= test[ i ][ 1 ];
-         if (test[ i ][ 0 ] = test[ i ][ 1 ]) 
-         {desired_output = 0} 
+         if (test[ i ][ 0 ] == test[ i ][ 1 ]) 
+         {
+            desired_output = 0;
+         } 
          else 
-         {desired_output = 1}
+         {
+            desired_output = 1;
+         }
          output = feedforward( test[ i ] );
 
          error = desired_output - output;
@@ -99,7 +103,7 @@ void train( void )
 
 int main( void )
 {
-   //initialize( );
+   initialize( );
 
    train( );
 
